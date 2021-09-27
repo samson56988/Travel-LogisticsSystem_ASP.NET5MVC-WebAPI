@@ -1,0 +1,144 @@
+﻿@model IEnumerable<UI.Models.Consignor>
+
+@{
+    ViewBag.Title = "Consignors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="page-header">
+    <h2>Consignors</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="index.html">
+                    <i class="fa fa-users"></i>
+                </a>
+            </li>
+            <li><span>Consignors</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+    </div>
+</header>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <a href="@Url.Action("CreateConsignor", "Master")" class="btn btn-primary">
+                <i class="fas fa-plus-square"></i> Create
+            </a>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Consignors</h2>
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Address1)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Address2)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.State)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.City)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Pincode)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.MobileNo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ConsignorGst)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Address1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Address2)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.State)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.City)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Pincode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MobileNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ConsignorGst)
+                                </td>
+                                <td>
+
+                                    <a href="@Url.Action("EditConsignor","Master", new { id = item.ConsignorID})" class="btn btn-mini btn-outkine-orange icon-edit bigger-10">Edit</a>
+                                    <a href="@Url.Action("DeleteConsignor","Master", new { id = item.ConsignorID})" class="btn btn-mini btn-outkine-orange icon-edit bigger-10">Delete</a>
+                                    <a href="@Url.Action("DeleteCategory","Master", new { id = item.ConsignorID})" class="btn btn-mini btn-outkine-orange icon-edit bigger-10">Transaction</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</div>
+
+
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+        @*function Delete(id) {
+            alertify.confirm('Web Api CRUD Operations','Are You Sure to Delete this Record ?',function(){
+                window.location.href  = '@Url.Action("Delete","Employee")/'+id;
+            },null );
+        }*@
+    </script>
+
+
+}
