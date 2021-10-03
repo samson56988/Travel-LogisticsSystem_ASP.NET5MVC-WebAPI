@@ -207,14 +207,22 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="BusinessInterface\ConsigneeServices\IConsigneeServices.cs" />
     <Compile Include="BusinessInterface\ConsignorServices\IConsignorServices.cs" />
+    <Compile Include="BusinessInterface\GoodsTransactionServices\IGoodTransactionServices.cs" />
     <Compile Include="BusinessLogic\ConsigneeBL\ConsigneeRepository.cs" />
     <Compile Include="BusinessLogic\ConsignorBL\ConsignorRepository.cs" />
+    <Compile Include="BusinessLogic\GoodsTransactionBL\GoodsTransactionRepository.cs" />
     <Compile Include="Connection\ConnectionString.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ConsigneeController.cs" />
-    <Compile Include="Controllers\ConsignorController.cs" />
+    <Compile Include="Controllers\Consignee\ConsigneeController.cs" />
+    <Compile Include="Controllers\Consignee\EditConsignorController.cs" />
+    <Compile Include="Controllers\Consignors\ConsignorController.cs" />
+    <Compile Include="Controllers\Consignors\SearchConsignorsController.cs" />
+    <Compile Include="Controllers\GoodTransaction\ConsigneeIDController.cs" />
+    <Compile Include="Controllers\GoodTransaction\GoodsTransactController.cs" />
+    <Compile Include="Controllers\GoodTransaction\GoodsTransactionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Controllers\Consignors\MasterController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -222,7 +230,10 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Consignee.cs" />
+    <Compile Include="Models\ConsigneeID.cs" />
+    <Compile Include="Models\ConsignorID.cs" />
     <Compile Include="Models\Consignors.cs" />
+    <Compile Include="Models\GoodTransactions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />

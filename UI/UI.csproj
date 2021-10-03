@@ -171,9 +171,13 @@
     <Compile Include="Controllers\Consignee\ConsigneeController.cs" />
     <Compile Include="Controllers\Dashboard\DashboardController.cs" />
     <Compile Include="Controllers\Consignor\MasterController.cs" />
+    <Compile Include="Controllers\GoodsTransaction\GoodTransactionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConsigneeID.cs" />
+    <Compile Include="Models\ConsignorID.cs" />
+    <Compile Include="Models\GoodsTransactions.cs" />
     <Compile Include="Models\Recievers.cs" />
     <Compile Include="Models\Consignor.cs" />
     <Compile Include="Models\Login.cs" />
@@ -264,6 +268,10 @@
     <Content Include="Views\Master\CreateConsignor.cshtml" />
     <Content Include="Views\Master\EditConsignor.cshtml" />
     <Content Include="Views\Consignee\Consignee.cshtml" />
+    <Content Include="Views\Consignee\CreateConsignee.cshtml" />
+    <Content Include="Views\Consignee\EditConsignee.cshtml" />
+    <Content Include="Views\GoodTransaction\GoodTransactions.cshtml" />
+    <Content Include="Views\GoodTransaction\CreateTransaction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

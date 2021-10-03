@@ -11,6 +11,8 @@ namespace LogisticsAndTravel.BusinessInterface.ConsignorServices
     {
         IList<Consignors> GetAllConsignor();
 
+        IList<Consignors> SearchConsignor(string search);
+
         Consignors ConsignorByID(int id);
 
         Consignors InsertNew(Consignors consignor);

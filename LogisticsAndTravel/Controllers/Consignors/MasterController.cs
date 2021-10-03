@@ -7,6 +7,9 @@ using System.Net.Http;
 using System.Web.Http;
 using LogisticsAndTravel.Models;
 using LogisticsAndTravel.BusinessLogic.ConsignorBL;
+using System.Web;
+using System.Web.Security;
+using System.Web.SessionState;
 
 namespace LogisticsAndTravel.Controllers
 {
@@ -21,10 +24,11 @@ namespace LogisticsAndTravel.Controllers
             con.ConnectionString = Connection.ConnectionString.GetConnection();
         }
         private readonly ConsignorRepository consignor = new ConsignorRepository();
+
         [HttpGet]
         public IHttpActionResult Login(string username, string password)
         {
-
+            
             string Message = "Correct Details";
             string Failed = "Failed Details";
             SqlDataReader dr;
@@ -35,6 +39,24 @@ namespace LogisticsAndTravel.Controllers
             dr = com.ExecuteReader();
             if (dr.HasRows)
             {
+                FormsAuthentication.SetAuthCookie(username, true);
+                
+                //HttpContext.Current.Session["Username"] = username.ToString();
+
+                var session = HttpContext.Current.Session;
+                if (session != null)
+                {
+                    if (session["Username"] == null)
+                    {
+                        session["Username"] = username.ToString();
+
+                        var users = session["Username"].ToString();
+                    }
+                }
+
+
+                string user = HttpContext.Current.Session["Username"].ToString();
+
                 Message.ToString();
                 return Ok(Message);
 
@@ -44,26 +66,20 @@ namespace LogisticsAndTravel.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Consignors> GetAllConsignor()
+        public IEnumerable<Models.Consignors> GetAllConsignor()
         {
             return consignor.GetAllConsignor().ToList();
         }
-
-
         [HttpPost]
-        public Consignors CreateConsignor([FromBody] Consignors consignors)
-        {
+        public Models.Consignors CreateConsignor([FromBody] Models.Consignors consignors)
+        {      
             return consignor.InsertNew(consignors);
-        }
-
-       
-
+        }     
         [HttpPut]
-        public Consignors UpdateConsignor([FromBody] Consignors consignors)
+        public Models.Consignors UpdateConsignor([FromBody] Models.Consignors consignors)
         {
             return consignor.Update(consignors);
         }
-
         [HttpDelete]
         public void DeleteConsignor(int id)
         {

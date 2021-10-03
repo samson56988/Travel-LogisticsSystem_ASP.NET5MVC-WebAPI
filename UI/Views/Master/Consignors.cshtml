@@ -32,6 +32,26 @@
     </div>
 </div>
 
+@using (Html.BeginForm("Consignors", "Master", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <h5>Consignors</h5>
+                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Consignors" })
+            </div>
+        </div>
+    </div>
+   <div class="row">
+   <div class="col-md-6">
+   <div class="form-group">
+   <button type="submit" class="btn btn btn-primary">
+   <i class="fas fa-search"></i>  Query Table </button>
+   </div>
+ </div>
+</div>
+}
+
 <hr />
 
 <div class="row">
@@ -106,10 +126,8 @@
                                     @Html.DisplayFor(modelItem => item.ConsignorGst)
                                 </td>
                                 <td>
-
-                                    <a href="@Url.Action("EditConsignor","Master", new { id = item.ConsignorID})" class="btn btn-mini btn-outkine-orange icon-edit bigger-10">Edit</a>
-                                    <a href="@Url.Action("DeleteConsignor","Master", new { id = item.ConsignorID})" class="btn btn-mini btn-outkine-orange icon-edit bigger-10">Delete</a>
-                                    <a href="@Url.Action("DeleteCategory","Master", new { id = item.ConsignorID})" class="btn btn-mini btn-outkine-orange icon-edit bigger-10">Transaction</a>
+                                    @Html.ActionLink("Edit", "EditConsignor", new { id = item.ConsignorID }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Delete", "DeleteConsignor", new { id = item.ConsignorID }, new { @class = "btn btn-danger" })
                                 </td>
                             </tr>
                         }

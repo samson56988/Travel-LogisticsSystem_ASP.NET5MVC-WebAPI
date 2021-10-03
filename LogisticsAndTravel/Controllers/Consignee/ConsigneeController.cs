@@ -14,21 +14,23 @@ namespace LogisticsAndTravel.Controllers
 
 
         [HttpGet]
-        public IEnumerable<Consignee> GetAllConsignee()
+        public IEnumerable<Models.Consignee> GetAllConsignee()
         {
             return consignee.GetAllConsignee().ToList();
         }
 
         [HttpPost]
-        public Consignee CreateConsignee([FromBody] Consignee consignees)
+        public Models.Consignee CreateConsignee([FromBody] Models.Consignee consignees)
         {
             return consignee.InsertNew(consignees);
         }
 
-
+        
+        
+        
 
         [HttpPut]
-        public Consignee UpdateConsignee([FromBody] Consignee consignees)
+        public Models.Consignee UpdateConsignee([FromBody] Models.Consignee consignees)
         {
             return consignee.Update(consignees);
         }

@@ -6,16 +6,18 @@ using System.Net.Http;
 using System.Web.Http;
 using LogisticsAndTravel.Models;
 using LogisticsAndTravel.BusinessLogic.ConsignorBL;
-namespace LogisticsAndTravel.Controllers
+using System.Web;
+
+namespace LogisticsAndTravel.Controllers.Consignors
 {
-    public class ConsignorController : ApiController
+    public class SearchConsignorsController : ApiController
     {
         private readonly ConsignorRepository consignor = new ConsignorRepository();
 
         [HttpGet]
-        public Consignors GetConsignorID(int id)
+        public IEnumerable<Models.Consignors> GetAllConsignor(string search)
         {
-            return consignor.ConsignorByID(id);
+            return consignor.SearchConsignor(search).ToList();
         }
     }
 }

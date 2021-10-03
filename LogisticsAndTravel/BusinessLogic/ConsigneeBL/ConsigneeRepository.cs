@@ -24,7 +24,7 @@ namespace LogisticsAndTravel.BusinessLogic.ConsigneeBL
                 {
 
                     consignee.ConsigneeID = Convert.ToInt32(rdr["ConsigneeID"].ToString());
-                    consignee.Name = rdr["Name"].ToString();
+                    consignee.Name = rdr["ConsigneeName"].ToString();
                     consignee.Address1 = rdr["Address1"].ToString();
                     consignee.Address2 = rdr["Address2"].ToString();
                     consignee.State = rdr["State"].ToString();
@@ -32,7 +32,7 @@ namespace LogisticsAndTravel.BusinessLogic.ConsigneeBL
                     consignee.Pincode = Convert.ToInt32(rdr["PinCode"].ToString());
                     consignee.MobileNo = rdr["MobileNo"].ToString();
                     consignee.Email = rdr["Email"].ToString();
-                    consignee.ConsignorGst = rdr["ConsigneeGst"].ToString();
+                    consignee.ConsignorGst = rdr["ConsigneeGstNo"].ToString();
 
                 }
                 rdr.Close();
@@ -68,7 +68,7 @@ namespace LogisticsAndTravel.BusinessLogic.ConsigneeBL
                 {
                     Consignee consignee = new Consignee();
                     consignee.ConsigneeID = Convert.ToInt32(rdr["ConsigneeID"].ToString());
-                    consignee.Name = rdr["Name"].ToString();
+                    consignee.Name = rdr["ConsigneeName"].ToString();
                     consignee.Address1 = rdr["Address1"].ToString();
                     consignee.Address2 = rdr["Address2"].ToString();
                     consignee.State = rdr["State"].ToString();
@@ -101,7 +101,7 @@ namespace LogisticsAndTravel.BusinessLogic.ConsigneeBL
                 cmd2.Parameters.AddWithValue("@Pincode", consignee.Pincode);
                 cmd2.Parameters.AddWithValue("@Mobileno", consignee.MobileNo);
                 cmd2.Parameters.AddWithValue("@Email", consignee.Email);
-                cmd2.Parameters.AddWithValue("@ConsignorGstNo", consignee.ConsignorGst);
+                cmd2.Parameters.AddWithValue("@ConsigneeGstNo", consignee.ConsignorGst);
                 cmd2.ExecuteNonQuery();
 
                 con.Close();

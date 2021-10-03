@@ -29,7 +29,10 @@ namespace UI.Controllers.Authentication
             if (consumedata.IsSuccessStatusCode)
             {
                 var resultMessage = consumedata.Content.ReadAsStringAsync().Result;
-                return RedirectToAction("Index", "Dashboard");
+                Session["Username"] = log.username.ToString();
+                return RedirectToAction("GoodTransactions", "GoodTransaction");
+
+                
             }
 
             return View();

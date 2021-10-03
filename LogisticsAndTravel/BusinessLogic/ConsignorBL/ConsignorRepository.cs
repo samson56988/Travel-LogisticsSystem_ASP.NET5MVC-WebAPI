@@ -39,7 +39,7 @@ namespace LogisticsAndTravel.BusinessLogic.ConsignorBL
                 {
                     Consignors consignor = new Consignors();
                     consignor.ConsignorID = Convert.ToInt32(rdr["ConsignorID"].ToString());
-                    consignor.Name = rdr["Name"].ToString();
+                    consignor.Name = rdr["ConsignorName"].ToString();
                     consignor.Address1 = rdr["Address1"].ToString();
                     consignor.Address2 = rdr["Address2"].ToString();
                     consignor.State = rdr["State"].ToString();
@@ -95,7 +95,7 @@ namespace LogisticsAndTravel.BusinessLogic.ConsignorBL
                 con.Open();
                 SqlCommand cmd2 = new SqlCommand("InsertConsignor", con);
                 cmd2.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd2.Parameters.AddWithValue("@Name", consignor.Name);
+                cmd2.Parameters.AddWithValue("@ConsignorName", consignor.Name);
                 cmd2.Parameters.AddWithValue("@Address1", consignor.Address1);
                 cmd2.Parameters.AddWithValue("@Address2", consignor.Address2);
                 cmd2.Parameters.AddWithValue("@State", consignor.State);
@@ -135,6 +135,37 @@ namespace LogisticsAndTravel.BusinessLogic.ConsignorBL
             }
 
             return consignor;
+        }
+
+        public IList<Consignors> SearchConsignor(string search)
+        {
+            List<Consignors> consignors = new List<Consignors>();
+            using (SqlConnection con = new SqlConnection(Connection.ConnectionString.GetConnection()))
+            {
+                SqlCommand cmd = new SqlCommand("SearchConsignor", con);
+                cmd.Parameters.AddWithValue("@Consignor", search);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    Consignors consignor = new Consignors();
+                    consignor.ConsignorID = Convert.ToInt32(rdr["ConsignorID"].ToString());
+                    consignor.Name = rdr["ConsignorName"].ToString();
+                    consignor.Address1 = rdr["Address1"].ToString();
+                    consignor.Address2 = rdr["Address2"].ToString();
+                    consignor.State = rdr["State"].ToString();
+                    consignor.City = rdr["City"].ToString();
+                    consignor.Pincode = Convert.ToInt32(rdr["PinCode"].ToString());
+                    consignor.MobileNo = rdr["MobileNo"].ToString();
+                    consignor.Email = rdr["Email"].ToString();
+                    consignor.ConsignorGst = rdr["ConsignorGst"].ToString();
+                    consignors.Add(consignor);
+                }
+                rdr.Close();
+            }
+
+            return consignors;
         }
     }
 
