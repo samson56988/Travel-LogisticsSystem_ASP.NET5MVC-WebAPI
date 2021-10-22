@@ -1,0 +1,110 @@
+﻿@model IEnumerable<UI.Models.Manifest>
+
+@{
+    ViewBag.Title = "ManifestConfirmList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="page-header">
+    <h2>Confirm List</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="index.html">
+                    <i class="fa fa-users"></i>
+                </a>
+            </li>
+            <li><span>Confirm List</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+    </div>
+</header>
+
+@using (Html.BeginForm("ManifestConfirmList", "Manifest", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    Confirm Transaction
+                </button>
+
+
+            </div>
+
+        </div>
+    </div>
+}
+
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Transactions</h2>
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TransactionID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.GoodsID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Consigneename)
+                            </th>                          
+                            <th>
+                                @Html.DisplayNameFor(model => model.Consignorname)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TrackingNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.GoodsDetails)
+                            </th>
+                            
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TransactionID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GoodsID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Consigneename)
+                                </td>
+                               
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Consignorname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TrackingNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GoodsDetails)
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</div>
+
+
+

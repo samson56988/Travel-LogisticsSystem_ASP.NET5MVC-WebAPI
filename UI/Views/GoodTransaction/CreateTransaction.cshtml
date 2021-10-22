@@ -104,6 +104,45 @@
                     </div>
 
                     <div class="form-group">
+                        @Html.LabelFor(model => model.HsnCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.HsnCode, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.HsnCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Grossweight, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Grossweight, new { htmlAttributes = new { @class = "form-control"} })
+                            @Html.ValidationMessageFor(model => model.Grossweight, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GstPercentage, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select class="form-control" id="" name="GstPercentage">
+                                <option>--Select Percentage--</option>
+                                <option>5% GST</option>
+                                <option>18% GST</option>
+                                <option>0% Tax</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.GstPercentage, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Rateper, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select class="form-control" id="" name="Rateper">
+                                <option>--Select--</option>
+                                <option>Weight</option>
+                                <option>Volume/Size</option>
+                                <option>Quantity</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.Rateper, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="submit" value="Create" class="btn btn-primary" />
                         </div>

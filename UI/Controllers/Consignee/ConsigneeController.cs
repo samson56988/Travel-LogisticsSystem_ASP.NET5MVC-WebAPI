@@ -37,6 +37,7 @@ namespace UI.Controllers.Consignors
         {
             if (ModelState.IsValid)
             {
+                reciever.branch = Session["Branch"].ToString();
                 using (var httpClient = new HttpClient())
                 {
                     StringContent content = new StringContent(JsonConvert.SerializeObject(reciever), Encoding.UTF8, "application/json");

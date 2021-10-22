@@ -11,6 +11,8 @@ namespace UI.Models
 
         public string password { get; set; }
 
+        public string branch { get; set; }
+
         public string Role { get; set; }
     }
 }

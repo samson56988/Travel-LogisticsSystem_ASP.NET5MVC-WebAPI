@@ -23,14 +23,15 @@ namespace UI.Controllers.Authentication
             HttpClient hc = new HttpClient();
             hc.BaseAddress = new Uri("http://localhost:17165/api/Master/");
             hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(mediaType: "application/json"));
-            var consumedata = await hc.GetAsync("Login?username=" + log.username + "&password=" + log.password);
+            var consumedata = await hc.GetAsync("Login?username=" + log.username + "&password=" + log.password+"&branch="+log.branch);
 
 
             if (consumedata.IsSuccessStatusCode)
             {
                 var resultMessage = consumedata.Content.ReadAsStringAsync().Result;
                 Session["Username"] = log.username.ToString();
-                return RedirectToAction("GoodTransactions", "GoodTransaction");
+                Session["Branch"] = log.branch.ToString();
+                return RedirectToAction("Consignors", "Master");
 
                 
             }

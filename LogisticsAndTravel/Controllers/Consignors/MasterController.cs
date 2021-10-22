@@ -26,7 +26,7 @@ namespace LogisticsAndTravel.Controllers
         private readonly ConsignorRepository consignor = new ConsignorRepository();
 
         [HttpGet]
-        public IHttpActionResult Login(string username, string password)
+        public IHttpActionResult Login(string username, string password,string branch)
         {
             
             string Message = "Correct Details";
@@ -35,7 +35,7 @@ namespace LogisticsAndTravel.Controllers
             connectionString();
             con.Open();
             com.Connection = con;
-            com.CommandText = "Select * from StaffTble where Username = '" + username + "'and Password = '" + password + "'";
+            com.CommandText = "Select * from StaffTbl where Username = '" + username + "'and Password = '" + password + "' and Branch = '"+branch+"'";
             dr = com.ExecuteReader();
             if (dr.HasRows)
             {

@@ -1,0 +1,124 @@
+﻿@model IEnumerable<UI.Models.Manifest>
+
+@{
+    ViewBag.Title = "Manifest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="page-header">
+    <h2>Manifest</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="index.html">
+                    <i class="fa fa-users"></i>
+                </a>
+            </li>
+            <li><span>Manifest</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+    </div>
+</header>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <a href="@Url.Action("GetAllTransactionForManifest", "Manifest")" class="btn btn-primary">
+                <i class="fas fa-plus-square"></i> Create Manifest
+            </a>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Manifest</h2>
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ManifestID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fromm)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.To)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Vehicle)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Driver)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ManifestID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fromm)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.To)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Vehicle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Driver)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Consignments", "EditConsignee", new { id = item.ManifestID }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Destination", "EditConsignee", new { id = item.ManifestID }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Vehicle", "EditConsignee", new { id = item.ManifestID }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Driver", "EditConsignee", new { id = item.ManifestID }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Delete", "EditConsignee", new { id = item.ManifestID }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+        @*function Delete(id) {
+            alertify.confirm('Web Api CRUD Operations','Are You Sure to Delete this Record ?',function(){
+                window.location.href  = '@Url.Action("Delete","Employee")/'+id;
+            },null );
+        }*@
+    </script>
+
+
+}
+
+
+

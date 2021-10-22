@@ -7,7 +7,7 @@ namespace UI.Models
 {
     public class GoodsTransactions
     {
-        public string TransactionID { get; set; }
+        public int TransactionID { get; set; }
 
         public string GoodsID { get; set; }
 
@@ -40,5 +40,19 @@ namespace UI.Models
         public string Status { get; set; }
 
         public string StaffID { get; set; }
+
+        public int HsnCode { get; set; }
+
+        public int Grossweight { get; set; }
+
+        public string GstPercentage { get; set; }
+
+        public string Rateper { get; set; }
+
+        public int Rate { get; set; }
+
+        public string branch { get; set; }
+
+        public string Staff { get; set; }
     }
 }

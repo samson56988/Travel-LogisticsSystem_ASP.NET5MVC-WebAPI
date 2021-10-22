@@ -13,7 +13,7 @@ namespace UI.Controllers.GoodsTransaction
     public class GoodTransactionController : Controller
     {
 
-        string ConsignorDropdown;
+        
         // GET: GoodTransaction
         public async System.Threading.Tasks.Task<ActionResult> GoodTransactions()
         {
@@ -96,6 +96,7 @@ namespace UI.Controllers.GoodsTransaction
             if (ModelState.IsValid)
             {
                 transaction.StaffID = Session["Username"].ToString();
+                transaction.branch = Session["Branch"].ToString();
                 using (var httpClient = new HttpClient())
                 {
                     StringContent content = new StringContent(JsonConvert.SerializeObject(transaction), Encoding.UTF8, "application/json");

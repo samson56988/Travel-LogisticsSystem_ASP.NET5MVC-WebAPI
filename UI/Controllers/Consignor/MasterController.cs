@@ -28,21 +28,22 @@ namespace UI.Controllers.Master
             return View(consignor);
         }
 
-        [HttpPost]
-        public async System.Threading.Tasks.Task<ActionResult> Consignors(string search)
-        {
-            List<Consignor> consignor = new List<Consignor>();
-            using (var httpClient = new HttpClient())
-            {
-                using (var response = await httpClient.GetAsync("http://localhost:17165/api/SearchConsignors/GetAllConsignor?search=" + search))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    consignor = JsonConvert.DeserializeObject<List<Consignor>>(apiResponse);
+        //[HttpPost]
+        //public async System.Threading.Tasks.Task<ActionResult> Consignors(string search)
+        //{
+        //    List<Consignor> consignor = new List<Consignor>();
 
-                }
-            }
-            return View(consignor);
-        }
+        //    using (var httpClient = new HttpClient())
+        //    {
+        //        using (var response = await httpClient.GetAsync("http://localhost:17165/api/SearchConsignors/GetAllConsignor?search=" + search))
+        //        {
+        //            string apiResponse = await response.Content.ReadAsStringAsync();
+        //            consignor = JsonConvert.DeserializeObject<List<Consignor>>(apiResponse);
+
+        //        }
+        //    }
+        //    return View(consignor);
+        //}
 
         public ActionResult CreateConsignor()
         {
@@ -54,6 +55,7 @@ namespace UI.Controllers.Master
         {
             if (ModelState.IsValid)
             {
+                consignor.branch = Session["Branch"].ToString();
                 using (var httpClient = new HttpClient())
                 {
                     StringContent content = new StringContent(JsonConvert.SerializeObject(consignor), Encoding.UTF8, "application/json");

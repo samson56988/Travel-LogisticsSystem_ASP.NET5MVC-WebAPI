@@ -26,5 +26,7 @@ namespace LogisticsAndTravel.Models
         public string Email { get; set; }
 
         public string ConsignorGst { get; set; }
+
+        public string Branch { get; set; }
     }
 }

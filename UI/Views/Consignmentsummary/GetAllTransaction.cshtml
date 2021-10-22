@@ -1,0 +1,149 @@
+﻿@model IEnumerable<UI.Models.GoodsTransactions>
+
+@{
+    ViewBag.Title = "GetAllTransaction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<header class="page-header">
+    <h2>Transactions</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="index.html">
+                    <i class="fa fa-users"></i>
+                </a>
+            </li>
+            <li><span>Transactions</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+    </div>
+</header>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <a href="@Url.Action("CreateTransaction", "GoodTransaction")" class="btn btn-primary">
+                <i class="fas fa-plus-square"></i> Create
+            </a>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Transactions</h2>
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TransactionID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GoodsID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GoodsDetails)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PackageType)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ShipmentType)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Consignorname)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ConsigneeNamee)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Weight)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TrackingNumber)
+                                </th>
+                                <th></th>
+                            </tr>
+                        <thead>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TransactionID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GoodsID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GoodsDetails)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PackageType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ShipmentType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Consignorname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ConsigneeNamee)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Weight)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TrackingNumber)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Create Summary", "AddConsignmentsummary", new { id = item.TransactionID }, new { @class = "btn btn-primary" })
+                                    </td>
+                                </tr>
+                            }
+
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</div>
+
+
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+        @*function Delete(id) {
+            alertify.confirm('Web Api CRUD Operations','Are You Sure to Delete this Record ?',function(){
+                window.location.href  = '@Url.Action("Delete","Employee")/'+id;
+            },null );
+        }*@
+    </script>
+
+
+}

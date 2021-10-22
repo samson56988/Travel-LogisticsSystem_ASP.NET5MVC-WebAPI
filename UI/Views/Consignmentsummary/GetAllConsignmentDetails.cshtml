@@ -1,0 +1,124 @@
+﻿@model IEnumerable<UI.Models.ConsignmentSummary>
+
+@{
+    ViewBag.Title = "GetAllConsignmentDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<header class="page-header">
+    <h2>Consignment Details</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="index.html">
+                    <i class="fa fa-users"></i>
+                </a>
+            </li>
+            <li><span>Consignments</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+    </div>
+</header>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <a href="@Url.Action("GetAllTransaction", "Consignmentsummary")" class="btn btn-primary">
+                <i class="fas fa-plus-square"></i> Create
+            </a>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Consignees</h2>
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Consignor)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Consignee)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ValueOfGoods)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.From)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Too)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EwayBillNo)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Consignor)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Consignee)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ValueOfGoods)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.From)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Too)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EwayBillNo)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "EditConsignee", new { id = item.ConsignmentID }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Delete", "DeleteConsignor", new { id = item.ConsignmentID }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+        @*function Delete(id) {
+            alertify.confirm('Web Api CRUD Operations','Are You Sure to Delete this Record ?',function(){
+                window.location.href  = '@Url.Action("Delete","Employee")/'+id;
+            },null );
+        }*@
+    </script>
+
+
+}
+
+

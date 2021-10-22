@@ -1,0 +1,132 @@
+﻿@model IEnumerable<UI.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Vehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="page-header">
+    <h2>Vehicles</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="index.html">
+                    <i class="fa fa-users"></i>
+                </a>
+            </li>
+            <li><span>Vehicles</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+    </div>
+</header>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <a href="@Url.Action("CreateVehicle", "Vehicle")" class="btn btn-primary">
+                <i class="fas fa-plus-square"></i> Create
+            </a>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Vehicles</h2>
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.VehicleRegistration)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Vehiclemodel)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Color)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Vehiclemakername)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.chesisno)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.insuranceValidUpto)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.permitdetails)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VehicleRegistration)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Vehiclemodel)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Color)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Vehiclemakername)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.chesisno)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.insuranceValidUpto)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.permitdetails)
+                                </td>
+                                <td>
+                                @Html.ActionLink("Hire", "EditConsignee", new { id = item.VehicleID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Edit", "EditConsignee", new { id = item.VehicleID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Delete", "DeleteConsignor", new { id = item.VehicleID }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+        @*function Delete(id) {
+            alertify.confirm('Web Api CRUD Operations','Are You Sure to Delete this Record ?',function(){
+                window.location.href  = '@Url.Action("Delete","Employee")/'+id;
+            },null );
+        }*@
+    </script>
+}
+
+
+
+

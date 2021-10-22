@@ -15,10 +15,10 @@ namespace LogisticsAndTravel.BusinessLogic.ConsigneeBL
             Consignee consignee = new Consignee();
             using (SqlConnection con = new SqlConnection(Connection.ConnectionString.GetConnection()))
             {
-                SqlCommand cmd = new SqlCommand("GetConsigneeID", con);
+                SqlCommand cmd = new SqlCommand("getConsigneeID", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 con.Open();
-                cmd.Parameters.AddWithValue("@ID", id);
+                cmd.Parameters.AddWithValue("@ConsigneeID", id);
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
@@ -32,7 +32,7 @@ namespace LogisticsAndTravel.BusinessLogic.ConsigneeBL
                     consignee.Pincode = Convert.ToInt32(rdr["PinCode"].ToString());
                     consignee.MobileNo = rdr["MobileNo"].ToString();
                     consignee.Email = rdr["Email"].ToString();
-                    consignee.ConsignorGst = rdr["ConsigneeGstNo"].ToString();
+                    consignee.ConsignorGst = rdr["ConsigneeGst"].ToString();
 
                 }
                 rdr.Close();
@@ -60,9 +60,10 @@ namespace LogisticsAndTravel.BusinessLogic.ConsigneeBL
             List<Consignee> consignees = new List<Consignee>();
             using (SqlConnection con = new SqlConnection(Connection.ConnectionString.GetConnection()))
             {
-                SqlCommand cmd = new SqlCommand("GetConsigneee", con);
+                SqlCommand cmd = new SqlCommand("getConsignee", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 con.Open();
+                
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
@@ -76,7 +77,7 @@ namespace LogisticsAndTravel.BusinessLogic.ConsigneeBL
                     consignee.Pincode = Convert.ToInt32(rdr["PinCode"].ToString());
                     consignee.MobileNo = rdr["MobileNo"].ToString();
                     consignee.Email = rdr["Email"].ToString();
-                    consignee.ConsignorGst = rdr["ConsigneeGstNo"].ToString();
+                    consignee.ConsignorGst = rdr["ConsigneeGst"].ToString();
                     consignees.Add(consignee);
                 }
                 rdr.Close();
@@ -89,21 +90,20 @@ namespace LogisticsAndTravel.BusinessLogic.ConsigneeBL
         {
             using (SqlConnection con = new SqlConnection(Connection.ConnectionString.GetConnection()))
             {
-
                 con.Open();
-                SqlCommand cmd2 = new SqlCommand("CreateConsignee", con);
+                SqlCommand cmd2 = new SqlCommand("AddConsignee", con);
                 cmd2.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd2.Parameters.AddWithValue("@Name", consignee.Name);
+                cmd2.Parameters.AddWithValue("@ConsigneeName", consignee.Name);
                 cmd2.Parameters.AddWithValue("@Address1", consignee.Address1);
                 cmd2.Parameters.AddWithValue("@Address2", consignee.Address2);
                 cmd2.Parameters.AddWithValue("@State", consignee.State);
                 cmd2.Parameters.AddWithValue("@City", consignee.City);
                 cmd2.Parameters.AddWithValue("@Pincode", consignee.Pincode);
-                cmd2.Parameters.AddWithValue("@Mobileno", consignee.MobileNo);
+                cmd2.Parameters.AddWithValue("@MobileNo", consignee.MobileNo);
                 cmd2.Parameters.AddWithValue("@Email", consignee.Email);
-                cmd2.Parameters.AddWithValue("@ConsigneeGstNo", consignee.ConsignorGst);
+                cmd2.Parameters.AddWithValue("@ConsigneeGst", consignee.ConsignorGst);
+                cmd2.Parameters.AddWithValue("@Branch", consignee.Branch);
                 cmd2.ExecuteNonQuery();
-
                 con.Close();
             }
 
@@ -118,15 +118,16 @@ namespace LogisticsAndTravel.BusinessLogic.ConsigneeBL
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 con.Open();
                 cmd.Parameters.AddWithValue("@ConsigneeID", consignee.ConsigneeID);
-                cmd.Parameters.AddWithValue("@Name", consignee.Name);
+                cmd.Parameters.AddWithValue("@ConsigneeName", consignee.Name);
                 cmd.Parameters.AddWithValue("@Address1", consignee.Address1);
                 cmd.Parameters.AddWithValue("@Address2", consignee.Address2);
                 cmd.Parameters.AddWithValue("@State", consignee.State);
                 cmd.Parameters.AddWithValue("@City", consignee.City);
                 cmd.Parameters.AddWithValue("@Pincode", consignee.Pincode);
-                cmd.Parameters.AddWithValue("@Mobileno", consignee.MobileNo);
+                cmd.Parameters.AddWithValue("@MobileNo", consignee.MobileNo);
                 cmd.Parameters.AddWithValue("@Email", consignee.Email);
-                cmd.Parameters.AddWithValue("@ConsignorGstNo", consignee.ConsignorGst);
+                cmd.Parameters.AddWithValue("@ConsignorGst", consignee.ConsignorGst);
+                cmd.Parameters.AddWithValue("@Branch", consignee.Branch);
                 cmd.ExecuteNonQuery();
 
                 con.Close();

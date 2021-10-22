@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -169,18 +170,26 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Authentication\AuthenticationController.cs" />
     <Compile Include="Controllers\Consignee\ConsigneeController.cs" />
+    <Compile Include="Controllers\ConsignmentSummary\ConsignmentsummaryController.cs" />
     <Compile Include="Controllers\Dashboard\DashboardController.cs" />
     <Compile Include="Controllers\Consignor\MasterController.cs" />
     <Compile Include="Controllers\GoodsTransaction\GoodTransactionController.cs" />
+    <Compile Include="Controllers\Manifest\ManifestController.cs" />
+    <Compile Include="Controllers\StoredGoods\StoredGoodsController.cs" />
+    <Compile Include="Controllers\Vehicle\VehicleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ConsigneeID.cs" />
+    <Compile Include="Models\ConsignmentSummary.cs" />
     <Compile Include="Models\ConsignorID.cs" />
     <Compile Include="Models\GoodsTransactions.cs" />
+    <Compile Include="Models\Manifest.cs" />
     <Compile Include="Models\Recievers.cs" />
     <Compile Include="Models\Consignor.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\StoredGoods.cs" />
+    <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -272,6 +281,17 @@
     <Content Include="Views\Consignee\EditConsignee.cshtml" />
     <Content Include="Views\GoodTransaction\GoodTransactions.cshtml" />
     <Content Include="Views\GoodTransaction\CreateTransaction.cshtml" />
+    <Content Include="Views\StoredGoods\GoodTransactions.cshtml" />
+    <Content Include="Views\StoredGoods\StoredGoods.cshtml" />
+    <Content Include="Views\Consignmentsummary\GetAllConsignmentDetails.cshtml" />
+    <Content Include="Views\Consignmentsummary\GetAllTransaction.cshtml" />
+    <Content Include="Views\Consignmentsummary\AddConsignmentsummary.cshtml" />
+    <Content Include="Views\Vehicle\Vehicle.cshtml" />
+    <Content Include="Views\Vehicle\CreateVehicle.cshtml" />
+    <Content Include="Views\Manifest\Manifest.cshtml" />
+    <Content Include="Views\Manifest\GetAllTransactionForManifest.cshtml" />
+    <Content Include="Views\Manifest\AddToManifest.cshtml" />
+    <Content Include="Views\Manifest\ManifestConfirmList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,11 +23,7 @@ namespace LogisticsAndTravel.Controllers
         public Models.Consignee CreateConsignee([FromBody] Models.Consignee consignees)
         {
             return consignee.InsertNew(consignees);
-        }
-
-        
-        
-        
+        }        
 
         [HttpPut]
         public Models.Consignee UpdateConsignee([FromBody] Models.Consignee consignees)

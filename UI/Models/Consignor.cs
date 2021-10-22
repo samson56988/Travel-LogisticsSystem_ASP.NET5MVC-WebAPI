@@ -26,5 +26,7 @@ namespace UI.Models
         public string Email { get; set; }
 
         public string ConsignorGst { get; set; }
+
+        public string branch { get; set; }
     }
 }

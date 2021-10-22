@@ -75,9 +75,6 @@
                                     @Html.DisplayNameFor(model => model.Price)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.DispatchDate)
-                                </th>
-                                <th>
                                     @Html.DisplayNameFor(model => model.TrackingNumber)
                                 </th>
                                 <th></th>
@@ -114,13 +111,10 @@
                                         @Html.DisplayFor(modelItem => item.Price)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.DispatchDate)
-                                    </td>
-                                    <td>
                                         @Html.DisplayFor(modelItem => item.TrackingNumber)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Edit", "EditConsignor", new { id = item.TransactionID }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("Print", "EditConsignor", new { id = item.TransactionID }, new { @class = "btn btn-primary" })
                                         @Html.ActionLink("Delete", "DeleteConsignor", new { id = item.TransactionID }, new { @class = "btn btn-danger" })
                                     </td>
                                 </tr>
